@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const _RAW_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const API_URL = _RAW_URL.endsWith('/api') ? _RAW_URL : `${_RAW_URL}/api`;
 
 export const authService = {
   async register(name: string, email: string, password: string) {

@@ -4,7 +4,8 @@
 import Cookies from 'js-cookie';
 import { StockData, HistoricalDataResponse, AiReport } from '../types/stock';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const _RAW_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const API_URL = _RAW_URL.endsWith('/api') ? _RAW_URL : `${_RAW_URL}/api`;
 
 function getAuthHeaders(): HeadersInit {
   const token = Cookies.get('token');
