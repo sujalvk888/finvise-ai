@@ -1,0 +1,103 @@
+.container {
+  padding: 0; /* Layout padding handled by DashboardLayout mainContent */
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dash-text);
+}
+
+.description {
+  color: var(--dash-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.welcomeState {
+  margin-bottom: 24px;
+}
+
+/* ── Error box ── */
+.errorBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  color: #fca5a5;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.errorBox svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #f87171;
+}
+
+/* ── Skeletons ── */
+.skeletonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.skeletonBottomRow {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.skeletonCard {
+  background: var(--dash-header-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skeletonOverview { height: 260px; }
+.skeletonMetricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.skeletonMetric { height: 160px; }
+.skeletonChart { flex: 1; height: 440px; }
+.skeletonAi { width: 380px; flex-shrink: 0; height: 440px; }
+
+@media (max-width: 1200px) {
+  .skeletonMetricsGrid { grid-template-columns: repeat(2, 1fr); }
+  .skeletonAi { width: 320px; }
+}
+
+@media (max-width: 1024px) {
+  .skeletonBottomRow { flex-direction: column; }
+  .skeletonAi { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .skeletonMetricsGrid { grid-template-columns: 1fr; }
+}

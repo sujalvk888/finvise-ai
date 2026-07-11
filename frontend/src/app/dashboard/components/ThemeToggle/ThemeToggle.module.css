@@ -1,0 +1,24 @@
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--dash-border);
+  background-color: var(--dash-header-bg);
+  color: var(--dash-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggleBtn:hover {
+  background-color: var(--dash-bg);
+  color: var(--dash-text);
+  border-color: var(--dash-primary);
+}
+
+.placeholder {
+  width: 40px;
+  height: 40px;
+}

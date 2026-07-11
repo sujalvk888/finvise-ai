@@ -1,0 +1,45 @@
+:root {
+  /* Dashboard Specific Colors - Light Mode */
+  --dash-bg: #f8fafc;
+  --dash-sidebar-bg: #ffffff;
+  --dash-header-bg: #ffffff;
+  --dash-text: #1f2937;
+  --dash-text-muted: #6b7280;
+  --dash-border: #e5e7eb;
+  
+  /* Primary Brand */
+  --dash-primary: #103459;
+  --dash-secondary: #1ec8b4;
+  --dash-accent: #2ab6da;
+  
+  /* Buttons and Actions */
+  --dash-btn-gradient: linear-gradient(135deg, #1ec8b4 0%, #2ab6da 100%);
+  --dash-btn-text: #ffffff;
+  
+  /* Shadows */
+  --dash-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --dash-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --dash-shadow-card: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --dash-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.06);
+
+  /* Borders & Spacing */
+  --dash-radius: 20px;
+  --dash-radius-sm: 12px;
+  --dash-padding: 28px;
+}
+
+[data-theme="dark"] {
+  /* Dashboard Specific Colors - Dark Mode */
+  --dash-bg: #0f172a;
+  --dash-sidebar-bg: #1e293b;
+  --dash-header-bg: #1e293b;
+  --dash-text: #f8fafc;
+  --dash-text-muted: #94a3b8;
+  --dash-border: #334155;
+  
+  /* Shadows */
+  --dash-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --dash-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --dash-shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --dash-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,53 @@
+.layout {
+  display: flex;
+  min-height: 125vh;
+  width: 125vw;
+  background-color: var(--dash-bg);
+  color: var(--dash-text);
+  /* Apply a default theme font family if not inherited */
+  font-family: inherit;
+  zoom: 0.8;
+  overflow-x: hidden;
+}
+
+.mainWrapper {
+  flex: 1;
+  min-width: 0;
+  margin-left: 260px; /* Sidebar width */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+  background-color: var(--dash-bg);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: var(--dash-primary);
+  background-color: var(--dash-bg);
+}
+
+@media (max-width: 1024px) {
+  .mainWrapper {
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainWrapper {
+    margin-left: 0;
+  }
+  
+  .mainContent {
+    padding: 16px;
+  }
+}

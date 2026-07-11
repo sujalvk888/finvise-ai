@@ -1,0 +1,32 @@
+# ============================================================
+# FinVise.AI — Root .gitignore
+# ============================================================
+
+# Backend artifacts
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/**/*.pyo
+backend/*.db
+backend/.env
+
+# Frontend artifacts
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env*
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.pem
+.vscode/
+.idea/
+
+# IDE assistant files (not project documentation)
+AGENTS.md
+CLAUDE.md

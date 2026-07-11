@@ -1,0 +1,290 @@
+.card {
+  width: 100%;
+  width: 520px; /* Reduced from 600px */
+  background: white;
+  border-radius: 30px; /* Reduced from 32px */
+  padding: 20px 46px 25px 46px; /* Reduced top padding by 6px */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  font-family: inherit;
+  margin-top: -5px; /* Move card upward by 10px from previous -12px */
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px; /* Reduced from 32px */
+  font-weight: 800;
+  color: #0b1f41;
+  margin: 25px 0 8px 0; /* Reduced spacing between title and subtitle by 4px */
+}
+
+.subtitle {
+  text-align: center;
+  color: #667085;
+  font-size: 14px; /* Reduced from 16px */
+  margin: 0 0 16px 0; /* Tighter for register page */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px; /* Reduced vertical spacing between form groups */
+  position: relative;
+}
+
+.passwordGroup {
+  margin-bottom: 1px; /* Reduced to move helper text up */
+}
+
+.inputGroup label {
+  font-size: 13px; /* Reduced from 14px */
+  font-weight: 600;
+  color: #0b1f41;
+  margin-bottom: 0px; /* Reduced gap between label and input */
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #98A2B3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  width: 100%;
+  height: 48px; /* Reduced from 56px */
+  border: 1px solid #D0D5DD;
+  border-radius: 18px; /* Reduced from 12px */
+  padding: 0 45px; /* Exact same padding on left and right */
+  font-size: 15px; /* Reduced from 16px */
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  color: #101828;
+}
+
+.input:focus {
+  border-color: #0093FF;
+  outline: 2px solid rgba(0,147,255,0.2);
+}
+
+.input::placeholder {
+  color: #667085; /* Improved contrast */
+}
+
+.input::-ms-reveal,
+.input::-ms-clear {
+  display: none;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #98A2B3;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passwordHelper {
+  font-size: 12px; /* Reduced from 13px */
+  color: #98A2B3;
+  margin-bottom: 8px; /* Reduced gap below password helper */
+}
+
+.confirmPasswordGroup {
+  margin-bottom: 16px; /* Reduced from 20px */
+}
+
+.termsRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px; /* Reduced space before Create Account button */
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduced from 12px */
+  font-size: 13px; /* Reduced from 14px */
+  color: #667085;
+  cursor: pointer;
+}
+
+.checkboxLabel span {
+  display: block;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 22px; /* Increased by 2px */
+  height: 22px; /* Increased by 2px */
+  margin: 0;
+  transform: translateY(-1px); /* Visually center with text */
+  border-radius: 4px;
+  border: 1px solid #D0D5DD;
+  cursor: pointer;
+  accent-color: #0093FF;
+}
+
+.termsLink {
+  color: #0093FF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.button {
+  width: 100%;
+  height: 48px; /* Reduced from 58px */
+  border-radius: 24px; /* Reduced from 29px */
+  background: linear-gradient(90deg, #15D2CD 0%, #0093FF 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 16px; /* Reduced from 18px */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* Increased back slightly for better centering */
+  padding: 0 24px;
+  margin-bottom: 10px; /* Reduced space before divider */
+}
+
+.button svg {
+  display: block;
+  transform: translateY(1px); /* Centered relative to text baseline */
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #98A2B3;
+  margin-bottom: 10px; /* Reduced space before Google button */
+  font-size: 13px; /* Reduced from 14px */
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #E4E7EC;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 16px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 16px;
+}
+
+.googleBtn {
+  width: 100%;
+  height: 48px; /* Reduced from 58px */
+  background: white;
+  border: 1px solid #D0D5DD;
+  border-radius: 24px; /* Reduced from 29px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* Proper centering for Google */
+  padding: 0 24px;
+  font-weight: 600;
+  color: #344054;
+  cursor: pointer;
+  margin-bottom: 6px; /* Reduced space before bottom link by 4px */
+  font-size: 15px; /* Reduced from 16px */
+  transition: background-color 0.2s;
+}
+
+.googleBtn svg {
+  display: block;
+}
+
+.googleBtn:hover {
+  background: #F9FAFB;
+}
+
+.bottomLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 13px; /* Reduced from 14px */
+  color: #667085;
+}
+
+.bottomLink a {
+  color: #0093FF;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 6px;
+}
+
+.error {
+  color: #D92D20;
+  background: #FEF3F2;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+@media (max-width: 1023px) {
+  .card {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: 24px 20px;
+  }
+}
+
+.backButton {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #98A2B3;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.backButton:hover {
+  color: #0b1f41;
+}
+

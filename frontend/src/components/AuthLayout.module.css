@@ -1,0 +1,241 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #8EE6C3 0%, #38C6D9 35%, #0099F7 70%, #0D47A1 100%);
+  font-family: inherit;
+}
+
+.leftSection {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* To push footer to bottom */
+  padding: 0 5vw;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.centeredContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1; /* Take remaining space above footer to center perfectly */
+}
+
+.rightSection {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Increased from 16px */
+  margin-bottom: 24px;
+}
+
+.logoIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brandName {
+  color: #0b1f41;
+  font-weight: 700;
+  font-size: 18px; /* Slightly reduced */
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.tagline {
+  color: white;
+  font-size: 13px; /* Slightly reduced */
+  font-weight: 400;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroHeading {
+  font-size: 44px; /* Reduced from 64px */
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #0b1f41;
+  margin: 5px 0 10px 0; /* Reduced from 16px */
+}
+
+.heroHeadingWhite {
+  color: white;
+}
+
+.description {
+  color: #0b1f41;
+  font-size: 15px; /* Reduced from 18px */
+  line-height: 1.5;
+  margin-bottom: 12px; /* Reduced from 24px */
+  white-space: pre-line;
+  max-width: 500px;
+}
+
+.illustrationWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: -26px; /* Moved upward to reduce gap below paragraph */
+}
+
+.circularGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px; /* Scaled down */
+  height: 450px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 65%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dottedPattern {
+  position: absolute;
+  top: -48px; /* Moved upward by 20px */
+  right: calc(15% - 20px); /* Moved farther right by 20px */
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.5) 2px, transparent 2px);
+  background-size: 16px 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.illustration {
+  z-index: 1;
+  max-width: 100%;
+  height: auto;
+  max-height: 33vh; /* Reduced max-height so it scales well vertically */
+  object-fit: contain;
+}
+
+.featuresRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: -10px; /* Moved up */
+}
+
+.feature {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Increased from 8px to let text breathe */
+}
+
+.featureIconWrapper {
+  width: 40px; /* Reduced from 48px */
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featureIconWrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+.featureTitle {
+  font-weight: 700;
+  font-size: 14px; /* Reduced from 16px */
+  color: #0b1f41;
+}
+
+.featureDesc {
+  font-size: 12px; /* Reduced from 14px */
+  color: #0b1f41;
+  line-height: 1.3;
+}
+
+.footer {
+  text-align: left; /* Align consistently with left content */
+  color: white;
+  font-size: 12px;
+  opacity: 0.8;
+  margin-bottom: 21px; /* Moved upward by 5px */
+}
+
+@media (max-width: 1023px) {
+  .container {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .leftSection {
+    display: none;
+  }
+  .rightSection {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 40px 24px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 767px) {
+  .rightSection {
+    padding: 24px 16px;
+  }
+}
+
+.backButtonContainer {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 10;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667085;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.backButton:hover {
+  color: #0b1f41;
+}
+
+@media (max-width: 1023px) {
+  .backButtonContainer {
+    top: 24px;
+    left: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .backButtonContainer {
+    top: 16px;
+    left: 16px;
+  }
+}

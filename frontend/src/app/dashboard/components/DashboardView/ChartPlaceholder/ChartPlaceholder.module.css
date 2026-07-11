@@ -1,0 +1,276 @@
+.card {
+  background-color: var(--dash-header-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  padding: var(--dash-padding);
+  box-shadow: var(--dash-shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dash-shadow-hover);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dash-text);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.timeRange {
+  display: flex;
+  background-color: var(--dash-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+
+.timeBtn {
+  background: transparent;
+  border: none;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--dash-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 6px;
+  margin: 2px;
+}
+
+.timeBtn:hover {
+  background-color: rgba(0,0,0,0.02);
+  color: var(--dash-text);
+}
+
+.timeBtn.active {
+  background-color: rgba(42, 182, 218, 0.1);
+  color: #0f766e;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--dash-text);
+  padding: 6px 12px;
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--dash-border);
+  background: transparent;
+  color: var(--dash-text-muted);
+  cursor: pointer;
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.chartWrapperFull {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  min-height: 300px;
+}
+
+.tooltipActive {
+  background-color: var(--dash-header-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tooltipDate {
+  font-size: 0.75rem;
+  color: var(--dash-text-muted);
+  margin-bottom: 4px;
+}
+
+.tooltipValue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dash-text);
+}
+
+.tooltipDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #1ec8b4;
+}
+
+.skeletonChart {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--dash-bg) 25%, #f0f2f5 50%, var(--dash-bg) 75%);
+  background-size: 200% 100%;
+  animation: pulse 1.5s infinite linear;
+  border-radius: 12px;
+}
+
+@keyframes pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.errorState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(239, 68, 68, 0.05);
+  border-radius: 12px;
+  border: 1px dashed rgba(239, 68, 68, 0.2);
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: var(--dash-text-muted);
+}
+
+.emptyState p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Dropdown Container */
+.dropdownContainer {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: var(--dash-header-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 140px;
+  z-index: 10;
+  padding: 4px;
+}
+
+.dropdownItem {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--dash-text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: rgba(0,0,0,0.02);
+  color: var(--dash-text);
+}
+
+.dropdownItem.activeDropdown {
+  background-color: rgba(42, 182, 218, 0.1);
+  color: #0f766e;
+}
+
+/* Modal expand styles – rendered via portal so layout zoom doesn't affect them */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInBackdrop 0.2s ease;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modalCard {
+  background-color: var(--dash-header-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: 20px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35);
+  padding: 32px;
+  width: 90vw;
+  max-width: 1200px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUpModal 0.25s ease;
+  overflow: hidden;
+}
+
+.modalCard .chartContainer {
+  height: 100%;
+  flex: 1;
+}
+
+@keyframes slideUpModal {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+sqlalchemy
+passlib[bcrypt]
+python-jose[cryptography]
+google-auth
+pydantic[email]
+python-dotenv
+python-multipart
+finnhub-python
+requests
+yfinance
+pandas
+groq
+httpx
+psycopg2-binary

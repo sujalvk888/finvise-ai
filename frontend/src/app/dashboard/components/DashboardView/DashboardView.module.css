@@ -1,0 +1,63 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.bottomRow {
+  display: flex;
+  gap: 32px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.chartWrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.aiWrapper {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 16px;
+  color: var(--dash-text-muted);
+  font-size: 0.85rem;
+  background-color: transparent;
+}
+
+.disclaimerIcon {
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .aiWrapper {
+    width: 320px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bottomRow {
+    flex-direction: column;
+  }
+
+  .aiWrapper {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
