@@ -344,21 +344,13 @@ Suggested screenshots:
 
 ---
 
-## 🎥 Demo GIFs
+## 🎬 Live Demo
 
-> **Demo recordings will be added soon.**
-
-Recommended demonstrations:
-
-- User registration
-- User login
-- Searching a stock
-- AI analysis generation
-- Historical chart interaction
-- Watchlist management
-- Responsive dashboard
-- Loading skeletons
-- Complete analysis workflow
+<p align="center">
+  <img src="./assets/gifs/demo.gif"
+       alt="FinVise.AI demonstrating real-time stock analysis, AI-powered financial insights, interactive market charts, watchlist management, and investment analytics."
+       width="100%">
+</p>
 
 ---
 
