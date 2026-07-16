@@ -323,27 +323,6 @@ finvise-ai/
             └── layout.tsx
 ```
 
----
-
-# 📸 Screenshots
-
-> **Screenshots will be added soon.**
-
-Suggested screenshots:
-
-- 🏠 Landing Page
-- 🔐 Login Screen
-- 📝 Registration Screen
-- 📊 Dashboard Overview
-- 📈 Stock Analysis Results
-- 🤖 AI Financial Report
-- 📉 Historical Chart View
-- ⭐ Watchlist
-- 🌙 Dark Mode (if applicable)
-- 📱 Mobile Dashboard
-
----
-
 ## 🎬 Live Demo
 
 <p align="center">
@@ -351,6 +330,40 @@ Suggested screenshots:
        alt="FinVise.AI demonstrating real-time stock analysis, AI-powered financial insights, interactive market charts, watchlist management, and investment analytics."
        width="100%">
 </p>
+
+---
+
+## 📸 Screenshots
+
+### 🌐 Landing Experience
+
+| Landing Page | Sign In |
+|--------------|----------|
+| ![Landing](./screenshots/landing-page.png) | ![Login](./screenshots/login.png) |
+
+| Create Account |
+|----------------|
+| ![Register](./screenshots/register.png) |
+
+---
+
+### 📈 AI Stock Analysis Dashboard
+
+| Dashboard |
+|-----------|
+| ![Dashboard](./screenshots/dashboard.png) |
+
+| Interactive Stock Chart |
+|-------------------------|
+| ![Price History](./screenshots/price-history.png) |
+
+---
+
+### ⭐ Portfolio Management
+
+| Watchlist | Settings |
+|-----------|----------|
+| ![Watchlist](./screenshots/watchlist.png) | ![Settings](./screenshots/settings.png) |
 
 ---
 
