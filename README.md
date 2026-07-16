@@ -339,11 +339,11 @@ finvise-ai/
 
 | Landing Page | Sign In |
 |--------------|----------|
-| ![Landing](./screenshots/landing-page.png) | ![Login](./screenshots/login.png) |
+| ![Landing](./assets/screenshots/landing-page.png) | ![Login](./assets/screenshots/login.png) |
 
 | Create Account |
 |----------------|
-| ![Register](./screenshots/register.png) |
+| ![Register](./assets/screenshots/register.png) |
 
 ---
 
@@ -351,11 +351,11 @@ finvise-ai/
 
 | Dashboard |
 |-----------|
-| ![Dashboard](./screenshots/dashboard.png) |
+| ![Dashboard](./assets/screenshots/dashboard.png) |
 
 | Interactive Stock Chart |
 |-------------------------|
-| ![Price History](./screenshots/price-history.png) |
+| ![Price History](./assets/screenshots/price-history.png) |
 
 ---
 
@@ -363,7 +363,7 @@ finvise-ai/
 
 | Watchlist | Settings |
 |-----------|----------|
-| ![Watchlist](./screenshots/watchlist.png) | ![Settings](./screenshots/settings.png) |
+| ![Watchlist](./assets/screenshots/watchlist.png) | ![Settings](./assets/screenshots/settings.png) |
 
 ---
 
