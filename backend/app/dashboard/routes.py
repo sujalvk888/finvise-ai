@@ -4,7 +4,6 @@ Business logic lives in services.py; this file stays thin.
 """
 
 from fastapi import APIRouter, Depends, HTTPException
-from app.models.user import User
 from app.auth.deps import get_current_user
 from app.dashboard.schemas import (
     StockDataResponse, StockRequest, ErrorResponse,
@@ -28,7 +27,7 @@ router = APIRouter(prefix="/api/dashboard", tags=["dashboard"])
 )
 def analyze_stock(
     request: StockRequest,
-    current_user: User = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
     """
     Fetch real-time stock data for a given ticker from Finnhub.
@@ -46,10 +45,10 @@ def analyze_stock(
 
 
 @router.get("/summary")
-def get_dashboard_summary(current_user: User = Depends(get_current_user)):
+def get_dashboard_summary(current_user: dict = Depends(get_current_user)):
     """Legacy summary endpoint — kept for backwards compatibility."""
     return {
-        "message": f"Welcome to the dashboard, {current_user.name}!",
+        "message": f"Welcome to the dashboard, {current_user.get('name', 'User')}!",
         "status": "Dashboard is live.",
     }
 
@@ -65,7 +64,7 @@ def get_dashboard_summary(current_user: User = Depends(get_current_user)):
 def fetch_history(
     ticker: str,
     range: str,
-    current_user: User = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
     """
     Fetch historical stock data for a given ticker and range.
@@ -97,7 +96,7 @@ def fetch_history(
 )
 def analyze_with_ai(
     request: AiReportRequest,
-    current_user: User = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
     """
     Generate an AI financial analysis report for a given ticker.
@@ -145,7 +144,7 @@ def analyze_with_ai(
 
 
 @router.get("/popular")
-def fetch_popular_stocks(current_user: User = Depends(get_current_user)):
+def fetch_popular_stocks(current_user: dict = Depends(get_current_user)):
     """
     Returns a list of popular tech stocks for the watchlist add modal.
     """

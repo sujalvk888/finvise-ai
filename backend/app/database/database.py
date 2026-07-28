@@ -1,31 +1,63 @@
 import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from pymongo import MongoClient
+from pymongo.errors import PyMongoError
 from dotenv import load_dotenv
 
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app.db")
+# MongoDB Connection Configuration
+# Support MONGODB_URL or fallback to DATABASE_URL only if it is a valid MongoDB URI, otherwise default to local
+_uri = os.getenv("MONGODB_URL")
+if not _uri:
+    _db_url = os.getenv("DATABASE_URL", "")
+    if _db_url.startswith("mongodb://") or _db_url.startswith("mongodb+srv://"):
+        _uri = _db_url
+    else:
+        _uri = "mongodb://localhost:27017"
 
-# Automatically fix the connection string prefix if it uses the old postgresql:// format
-if SQLALCHEMY_DATABASE_URL.startswith("postgresql://"):
-    SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
+MONGODB_URL = _uri
+MONGODB_DB_NAME = os.getenv("MONGODB_DB_NAME", "finvise_db")
 
-if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
-    engine = create_engine(
-        SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-    )
-else:
-    # pool_pre_ping=True ensures dead connections (common in serverless/cloud DBs) are automatically dropped and recreated
-    engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
+# Lazy MongoClient initialization so imports are instant
+_client = None
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-Base = declarative_base()
+def get_client() -> MongoClient:
+    global _client
+    if _client is None:
+        _client = MongoClient(
+            MONGODB_URL,
+            tz_aware=True,
+            serverSelectionTimeoutMS=3000,
+            connectTimeoutMS=3000,
+        )
+    return _client
+
+
+def get_db_instance():
+    return get_client()[MONGODB_DB_NAME]
+
 
 def get_db():
-    db = SessionLocal()
+    """
+    FastAPI dependency that yields the MongoDB database instance.
+    """
     try:
-        yield db
-    finally:
-        db.close()
+        yield get_db_instance()
+    except PyMongoError as e:
+        raise
+
+
+def init_indexes():
+    """
+    Initialize MongoDB collection indexes for uniqueness and query performance.
+    """
+    try:
+        db = get_db_instance()
+        # Unique index on user email
+        db.users.create_index("email", unique=True)
+        # Compound unique index on user_id and ticker for watchlists
+        db.watchlists.create_index([("user_id", 1), ("ticker", 1)], unique=True)
+        db.watchlists.create_index("user_id")
+    except Exception as e:
+        print(f"Warning: Could not initialize MongoDB indexes: {e}")

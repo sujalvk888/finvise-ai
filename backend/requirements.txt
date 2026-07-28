@@ -1,6 +1,8 @@
 fastapi
 uvicorn
-sqlalchemy
+pymongo
+motor
+dnspython
 bcrypt
 python-jose[cryptography]
 google-auth
@@ -13,4 +15,3 @@ yfinance
 pandas
 groq
 httpx
-psycopg2-binary

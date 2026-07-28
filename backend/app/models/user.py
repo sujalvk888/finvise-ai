@@ -1,14 +1,40 @@
-from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime, timezone
-from app.database.database import Base
+from typing import Optional, Dict, Any
 
-class User(Base):
-    __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    email = Column(String, unique=True, index=True, nullable=False)
-    hashed_password = Column(String, nullable=True) # Nullable for OAuth users
-    auth_provider = Column(String, default="local") # "local" or "google"
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
+def user_doc_to_dict(doc: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    """
+    Convert a raw MongoDB user document to a clean Python dictionary with string 'id'.
+    """
+    if not doc:
+        return None
+
+    return {
+        "id": str(doc["_id"]),
+        "name": doc.get("name", ""),
+        "email": doc.get("email", ""),
+        "hashed_password": doc.get("hashed_password"),
+        "auth_provider": doc.get("auth_provider", "local"),
+        "created_at": doc.get("created_at", datetime.now(timezone.utc)),
+        "updated_at": doc.get("updated_at", datetime.now(timezone.utc)),
+    }
+
+
+def create_user_doc(
+    email: str,
+    name: str,
+    hashed_password: Optional[str] = None,
+    auth_provider: str = "local",
+) -> Dict[str, Any]:
+    """
+    Create a new MongoDB user document dictionary.
+    """
+    now = datetime.now(timezone.utc)
+    return {
+        "email": email,
+        "name": name,
+        "hashed_password": hashed_password,
+        "auth_provider": auth_provider,
+        "created_at": now,
+        "updated_at": now,
+    }

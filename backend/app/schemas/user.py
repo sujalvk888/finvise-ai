@@ -20,7 +20,7 @@ class UserGoogleAuth(BaseModel):
     credential: str # Google ID token
 
 class UserOut(UserBase):
-    id: int
+    id: str
     auth_provider: str
     created_at: datetime
     updated_at: datetime

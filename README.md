@@ -30,7 +30,7 @@ Analyze stocks with real-time market data, interactive financial visualizations,
 <p>
   <img src="https://img.shields.io/badge/Groq-AI_Analysis-F97316?style=flat-square"/>
   <img src="https://img.shields.io/badge/Finnhub-Real--Time_Data-16A34A?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=flat-square&logo=supabase&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white"/>
   <img src="https://img.shields.io/badge/JWT-Authentication-F59E0B?style=flat-square"/>
   <img src="https://img.shields.io/badge/Recharts-Interactive_Charts-8B5CF6?style=flat-square"/>
 </p>
@@ -43,7 +43,7 @@ Analyze stocks with real-time market data, interactive financial visualizations,
 
 **FinVise.AI** is a full-stack AI-powered financial analysis platform that combines real-time market intelligence with Large Language Model (LLM) capabilities to help users better understand stock performance and investment opportunities.
 
-Built with **Next.js 16**, **React 19**, **FastAPI**, **Python**, and **PostgreSQL**, the platform fetches live market data from **Finnhub**, transforms it into structured financial datasets, and generates AI-powered reports using **Groq**. Users can explore historical price movements, visualize financial trends, monitor watchlists, and receive concise investment summaries—all within a modern, responsive dashboard.
+Built with **Next.js 16**, **React 19**, **FastAPI**, **Python**, and **MongoDB Atlas**, the platform fetches live market data from **Finnhub**, transforms it into structured financial datasets, and generates AI-powered reports using **Groq**. Users can explore historical price movements, visualize financial trends, monitor watchlists, and receive concise investment summaries—all within a modern, responsive dashboard.
 
 Rather than presenting raw market numbers alone, FinVise.AI focuses on turning financial data into actionable insights through interactive charts, contextual analysis, and automated investment verdicts.
 
@@ -175,7 +175,7 @@ Throughout development, the project explored concepts such as:
 - AI-assisted analysis
 - FastAPI service architecture
 - JWT authentication
-- PostgreSQL data management
+- MongoDB Atlas data management
 - Interactive charting
 - Responsive dashboard design
 - Asynchronous data processing
@@ -206,7 +206,7 @@ The result is a practical financial intelligence platform that demonstrates how 
 |------------|---------|
 | FastAPI | REST API Framework |
 | Python | Backend Development |
-| SQLAlchemy | ORM |
+| MongoDB (PyMongo / Motor) | NoSQL Database & Async Driver |
 | Uvicorn | ASGI Server |
 | Pydantic | Request Validation |
 
@@ -225,7 +225,7 @@ The result is a practical financial intelligence platform that demonstrates how 
 
 | Technology | Purpose |
 |------------|---------|
-| Supabase PostgreSQL | Relational Database |
+| MongoDB Atlas | Cloud NoSQL Database |
 | JWT | Authentication |
 | bcrypt | Password Hashing |
 
@@ -264,10 +264,10 @@ FinVise.AI follows a modern full-stack architecture that separates the presentat
                          Business Logic
                                 │
                                 ▼
-                          SQLAlchemy ORM
+                         PyMongo / Motor
                                 │
                                 ▼
-                    PostgreSQL (Supabase)
+                     MongoDB Atlas Cloud DB
 ```
 
 ---
@@ -391,7 +391,7 @@ https://finvise-ai-backend.onrender.com
 |---------|----------|
 | Frontend | Vercel |
 | Backend | Render |
-| Database | Supabase PostgreSQL |
+| Database | MongoDB Atlas Cloud DB |
 | AI Provider | Groq |
 | Market Data | Finnhub |
 
@@ -411,7 +411,7 @@ Before getting started, make sure the following tools are installed on your syst
 - Node.js (v20 or later recommended)
 - Python 3.11+
 - Git
-- PostgreSQL (or a Supabase project)
+- MongoDB Atlas cloud account (or local MongoDB instance)
 - npm or your preferred package manager
 
 Verify your installation:
@@ -511,7 +511,8 @@ Example configuration:
 ```env
 ENVIRONMENT=development
 
-DATABASE_URL=postgresql://username:password@host:5432/database
+MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net/?appName=Cluster0
+MONGODB_DB_NAME=finvise_db
 
 FINNHUB_API_KEY=your_finnhub_api_key
 
@@ -536,7 +537,7 @@ frontend/
 Example:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:8000/api
 ```
 
 ---
@@ -546,7 +547,8 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 | Variable | Description |
 |----------|-------------|
 | `ENVIRONMENT` | Controls development or production behavior |
-| `DATABASE_URL` | PostgreSQL connection string |
+| `MONGODB_URL` | MongoDB Atlas Cloud DB connection URI |
+| `MONGODB_DB_NAME` | Name of the MongoDB database (`finvise_db`) |
 | `FINNHUB_API_KEY` | Finnhub API credential |
 | `GROQ_API_KEY` | Groq API credential |
 | `JWT_SECRET` | Secret used for JWT signing |
@@ -930,11 +932,11 @@ https://finvise-ai-backend.onrender.com
 
 **Development**
 
-- Local PostgreSQL
+- Local MongoDB instance
 
 **Production**
 
-- Supabase PostgreSQL
+- MongoDB Atlas Cloud DB
 
 ---
 
@@ -944,7 +946,7 @@ https://finvise-ai-backend.onrender.com
 |---------|----------|
 | Finnhub | Real-time market data |
 | Groq | AI financial analysis |
-| Supabase | PostgreSQL hosting |
+| MongoDB Atlas | Cloud NoSQL database hosting |
 | Render | FastAPI deployment |
 | Vercel | Next.js deployment |
 
@@ -967,10 +969,10 @@ https://finvise-ai-backend.onrender.com
       │            │            │
       └────────────┼────────────┘
                    ▼
-          SQLAlchemy ORM
+          PyMongo / Motor
                    │
                    ▼
-      PostgreSQL (Supabase)
+      MongoDB Atlas Cloud DB
 ```
 
 ---
@@ -983,7 +985,7 @@ FinVise.AI includes several security-focused practices.
 - bcrypt password hashing
 - Protected API endpoints
 - Pydantic request validation
-- SQLAlchemy ORM
+- MongoDB query parameterization
 - Environment variable isolation
 - Production-safe API configuration
 - Hidden Swagger documentation in production
@@ -1201,7 +1203,7 @@ FinVise.AI combines modern frontend technologies, scalable backend services, and
 
 - FastAPI
 - Python
-- SQLAlchemy
+- PyMongo / Motor
 - Uvicorn
 - Pydantic
 - Async request handling
@@ -1219,10 +1221,9 @@ FinVise.AI combines modern frontend technologies, scalable backend services, and
 
 ### Database
 
-- PostgreSQL
-- Supabase hosting
-- SQLAlchemy ORM
-- Secure relational data storage
+- MongoDB Atlas Cloud DB
+- PyMongo / Motor async driver
+- Secure NoSQL data storage
 
 ---
 
@@ -1239,7 +1240,7 @@ FinVise.AI combines modern frontend technologies, scalable backend services, and
 
 - Finnhub
 - Groq
-- Supabase
+- MongoDB Atlas
 - Render
 - Vercel
 
@@ -1257,7 +1258,7 @@ Throughout development, key concepts explored include:
 - AI prompt engineering
 - Financial data integration
 - JWT authentication
-- PostgreSQL database management
+- MongoDB Atlas database management
 - Interactive data visualization
 - Asynchronous programming
 - Full-stack deployment
@@ -1405,12 +1406,11 @@ Special thanks to:
 - React
 - TypeScript
 - Python
-- SQLAlchemy
+- PyMongo / Motor
 - Recharts
 - Finnhub
 - Groq
-- Supabase
-- PostgreSQL
+- MongoDB Atlas
 - Uvicorn
 - Vercel
 - Render

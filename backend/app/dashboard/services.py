@@ -17,8 +17,9 @@ from app.dashboard.validators import validate_stock_data
 
 logger = logging.getLogger(__name__)
 
-# Initialize Finnhub client
-finnhub_client = finnhub.Client(api_key=os.getenv('FINNHUB_API_KEY'))
+def get_finnhub_client():
+    """Return a fresh Finnhub client so key updates in .env are picked up."""
+    return finnhub.Client(api_key=os.getenv('FINNHUB_API_KEY'))
 
 def _safe_float(val):
     if val is None or val == "":
@@ -84,6 +85,7 @@ def fetch_stock_data(ticker_symbol: str) -> dict:
     """
     try:
         symbol = ticker_symbol.upper()
+        finnhub_client = get_finnhub_client()
         
         # 1. Company Profile
         profile = finnhub_client.company_profile2(symbol=symbol)

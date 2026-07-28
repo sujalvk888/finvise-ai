@@ -1,3 +1,2 @@
-# Dashboard models will go here
+# Dashboard models placeholder for MongoDB collection helpers or data structures.
 # e.g., FinancialData, AnalyticsSummary, etc.
-from app.database.database import Base

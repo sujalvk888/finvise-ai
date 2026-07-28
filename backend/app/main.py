@@ -2,30 +2,37 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from app.database.database import engine, Base
+from app.database.database import init_indexes
 from app.routes import auth, users
 from app.dashboard import routes as dashboard_routes
 from app.watchlist import routes as watchlist_routes
 
 load_dotenv()
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI(
     title="FinVise.AI API",
-    description="AI-powered financial analysis platform API",
+    description="Backend API for FinVise.AI — AI-powered stock analysis dashboard.",
     version="1.0.0",
     docs_url="/docs" if os.getenv("ENVIRONMENT", "development") != "production" else None,
     redoc_url=None,
 )
 
+
+@app.on_event("startup")
+def startup_db_client():
+    init_indexes()
+
+
+# Configure CORS — reads allowed origins from environment variable for production flexibility
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000")
+allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 app.include_router(auth.router)

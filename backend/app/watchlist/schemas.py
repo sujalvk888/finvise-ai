@@ -14,7 +14,7 @@ class WatchlistCreate(WatchlistBase):
     pass
 
 class WatchlistResponse(WatchlistBase):
-    id: int
+    id: str
     added_at: datetime
 
     class Config:
